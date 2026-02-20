@@ -1,4 +1,4 @@
-package model;
+package com.example.taskflow.model;
 
 import jakarta.persistence.*;
 

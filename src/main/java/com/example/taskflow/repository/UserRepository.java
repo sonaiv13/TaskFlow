@@ -1,6 +1,6 @@
-package repository;
+package com.example.taskflow.repository;
 
-import model.User;
+import com.example.taskflow.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
