@@ -1,6 +1,8 @@
 package com.example.taskflow.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "users")
@@ -10,11 +12,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "El nombre es obligatorio")
     private String name;
 
     @Column(unique = true)
+    @Email(message = "Email inválido")
+    @NotBlank(message = "El email es obligatorio")
     private String email;
 
+    @NotBlank(message = "La contraseña es obligatoria")
     private String password;
 
     //Constructor
