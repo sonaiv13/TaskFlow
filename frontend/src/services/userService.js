@@ -15,4 +15,4 @@ export const createUser = async (user) => {
 export const getUserById = async (id) => {
     const response = await axios.get(`${API_URL}/${id}`);
     return response.data;
-}
+};
