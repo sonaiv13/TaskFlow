@@ -16,7 +16,7 @@ public class TaskflowApp {
         SpringApplication.run(TaskflowApp.class, args);
     }
 
-    @Bean
+    /* @Bean
     CommandLineRunner commandLineRunner(UserService userService, TaskService taskService){
         return args -> {
 
@@ -38,6 +38,6 @@ public class TaskflowApp {
             taskService.getTasksByUserId(user.getId())
                     .forEach(t -> System.out.println(t.getTitle()));
         };
-    }
+    } */
 
 }
