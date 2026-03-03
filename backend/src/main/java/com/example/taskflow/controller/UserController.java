@@ -1,5 +1,7 @@
 package com.example.taskflow.controller;
 
+import com.example.taskflow.dto.RegisterRequest;
+import com.example.taskflow.dto.UserResponse;
 import com.example.taskflow.model.User;
 import com.example.taskflow.service.UserService;
 import jakarta.validation.Valid;
@@ -17,16 +19,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    //Crear usuario (registro)
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@Valid @RequestBody User user) {
-        return userService.register(user);
-    }
-
     //Obtener usuario por ID
     @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
+    public UserResponse getUser(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 }

@@ -45,22 +45,32 @@ public class UserService {
     }
 
     //Iniciar Sesión
-    public User login(String email, String password) {
+    public UserResponse login(String email, String password) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
 
-        if(!user.getPassword().equals(password)){
+        if(!passwordEncoder.matches(password, user.getPassword())){
             throw new RuntimeException("Contraseña incorrecta");
         }
 
-        return user;
+        return new UserResponse(
+                user.getId(),
+                user.getName(),
+                user.getEmail()
+        );
     }
 
     //Obtener usuario por ID
-    public User getUserById(Long id){
-        return userRepository.findById(id)
+    public UserResponse getUserById(Long id){
+        User user = userRepository.findById(id)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Usuario no encontrado.")
                 );
+
+        return new UserResponse(
+                user.getId(),
+                user.getName(),
+                user.getEmail()
+        );
     }
 }

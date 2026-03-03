@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="RegisterForm created">
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="LoginForm updated to include onSwitch for switching to register form. &#10;App.jsx updated to include RegisterForm.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/taskflow/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/taskflow/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/taskflow/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/taskflow/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/taskflow/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/taskflow/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,10 +85,10 @@
 }</component>
   <component name="RecapSpentCounter">
     <option name="endsOfQuotaMs" value="1774900817575" />
-    <option name="spentUsd" value="0.00606705" />
+    <option name="spentUsd" value="0.02960105" />
   </component>
   <component name="RecapUselessUpdatesCounter">
-    <option name="suspendCountdown" value="2" />
+    <option name="suspendCountdown" value="1" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -113,7 +116,7 @@
       <workItem from="1772189795280" duration="7326000" />
       <workItem from="1772197652353" duration="448000" />
       <workItem from="1772287538635" duration="4700000" />
-      <workItem from="1772541483516" duration="2315000" />
+      <workItem from="1772541483516" duration="3261000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend added to project. Backend and Frontend organized.">
       <option name="closed" value="true" />
@@ -243,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772545206201</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="LoginForm updated to include onSwitch for switching to register form. &#10;App.jsx updated to include RegisterForm.">
+      <option name="closed" value="true" />
+      <created>1772545799634</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1772545799634</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +275,7 @@
     <MESSAGE value="LoginForm update - credentials setters and form structure update." />
     <MESSAGE value="App - Login set to use LoginForm" />
     <MESSAGE value="RegisterForm created" />
-    <option name="LAST_COMMIT_MESSAGE" value="RegisterForm created" />
+    <MESSAGE value="LoginForm updated to include onSwitch for switching to register form. &#10;App.jsx updated to include RegisterForm." />
+    <option name="LAST_COMMIT_MESSAGE" value="LoginForm updated to include onSwitch for switching to register form. &#10;App.jsx updated to include RegisterForm." />
   </component>
 </project>
