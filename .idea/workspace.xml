@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="TaskService.js modified to include update and delete methods">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/taskService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/taskService.js" afterDir="false" />
+    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="TaskList UI created to show all tasks and interact with them.">
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +114,7 @@
       <workItem from="1772197652353" duration="448000" />
       <workItem from="1772287538635" duration="4700000" />
       <workItem from="1772541483516" duration="4899000" />
-      <workItem from="1772631957037" duration="2134000" />
+      <workItem from="1772631957037" duration="2469000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend added to project. Backend and Frontend organized.">
       <option name="closed" value="true" />
@@ -269,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772635664079</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="TaskList UI created to show all tasks and interact with them.">
+      <option name="closed" value="true" />
+      <created>1772636537414</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1772636537414</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,6 +300,7 @@
     <MESSAGE value="LoginForm updated to include onSwitch for switching to register form. &#10;App.jsx updated to include RegisterForm." />
     <MESSAGE value="register bug in auth service in frontend resolved" />
     <MESSAGE value="TaskService.js modified to include update and delete methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="TaskService.js modified to include update and delete methods" />
+    <MESSAGE value="TaskList UI created to show all tasks and interact with them." />
+    <option name="LAST_COMMIT_MESSAGE" value="TaskList UI created to show all tasks and interact with them." />
   </component>
 </project>
