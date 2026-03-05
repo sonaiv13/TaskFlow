@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="App.jsx modified to show Tasks list when logged in. And saves user when registers or login">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/authService.js" afterDir="false" />
+    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="authService in backend modified to include tokens.">
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/taskService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/taskService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +115,7 @@
       <workItem from="1772287538635" duration="4700000" />
       <workItem from="1772541483516" duration="4899000" />
       <workItem from="1772631957037" duration="3434000" />
-      <workItem from="1772737267944" duration="2536000" />
+      <workItem from="1772737267944" duration="2922000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend added to project. Backend and Frontend organized.">
       <option name="closed" value="true" />
@@ -286,7 +285,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772637007245</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="authService in backend modified to include tokens.">
+      <option name="closed" value="true" />
+      <created>1772744671839</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1772744671839</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +319,7 @@
     <MESSAGE value="TaskService.js modified to include update and delete methods" />
     <MESSAGE value="TaskList UI created to show all tasks and interact with them." />
     <MESSAGE value="App.jsx modified to show Tasks list when logged in. And saves user when registers or login" />
-    <option name="LAST_COMMIT_MESSAGE" value="App.jsx modified to show Tasks list when logged in. And saves user when registers or login" />
+    <MESSAGE value="authService in backend modified to include tokens." />
+    <option name="LAST_COMMIT_MESSAGE" value="authService in backend modified to include tokens." />
   </component>
 </project>
