@@ -4,6 +4,8 @@ import com.example.taskflow.dto.TaskResponse;
 import com.example.taskflow.model.Task;
 import com.example.taskflow.model.User;
 import com.example.taskflow.repository.TaskRepository;
+import com.example.taskflow.repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,21 +14,33 @@ import java.util.List;
 public class TaskService {
 
     private final TaskRepository taskRepository;
+    private final UserRepository userRepository;
 
     //Constructor con inyección de dependecias
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, UserRepository userRepository) {
         this.taskRepository = taskRepository;
+        this.userRepository = userRepository;
+    }
+
+    // Obtener usuario actual
+    private User getCurrentUser() {
+        String email = SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
     //Cerar tarea
-    public TaskResponse createTask(Long userId, String title, String description) {
+    public TaskResponse createTask(String title, String description) {
+        User user = getCurrentUser();
+
         Task task = new Task();
         task.setTitle(title);
         task.setDescription(description);
-
-        //Solo setea el userId
-        task.setUser(new User());
-        task.getUser().setId(userId);
+        task.setUser(user);
 
         Task savedTask = taskRepository.save(task);
 
@@ -38,8 +52,10 @@ public class TaskService {
     }
 
     //Obtener todas las tareas
-    public List<TaskResponse> getTasksByUserId(Long userId){
-        return taskRepository.findByUserId(userId)
+    public List<TaskResponse> getTasks(){
+        User user  = getCurrentUser();
+
+        return taskRepository.findByUserId(user.getId())
                 .stream()
                 .map(task -> new TaskResponse(
                         task.getId(),
@@ -50,12 +66,14 @@ public class TaskService {
     }
 
     //Actualizar tarea
-    public TaskResponse updateTask(Long userId, Long taskId, String title, String description) {
+    public TaskResponse updateTask(Long taskId, String title, String description) {
+        User user = getCurrentUser();
+
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
 
-        if(!task.getUser().getId().equals(userId)){
-            throw new RuntimeException("No puedes modificar tareas de otro usuario");
+        if(!task.getUser().getId().equals(user.getId())){
+            throw new RuntimeException("No puedes modificar esta tarea");
         }
 
         task.setTitle(title);
@@ -71,12 +89,14 @@ public class TaskService {
     }
 
     //Eliminar tarea
-    public void deleteTask(Long userId, Long taskId) {
+    public void deleteTask(Long taskId) {
+        User user = getCurrentUser();
+
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
 
-        if(!task.getUser().getId().equals(userId)){
-            throw new RuntimeException("No puedes eliminar tareas de otro usuario");
+        if(!task.getUser().getId().equals(user.getId())){
+            throw new RuntimeException("No puedes eliminar esta tarea");
         }
 
         taskRepository.delete(task);
