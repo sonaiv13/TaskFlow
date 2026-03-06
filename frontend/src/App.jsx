@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getCurrentUser, logout} from "./services/authService.js";
+import {getCurrentUser, getToken, logout} from "./services/authService.js";
 import LoginForm from "./components/LoginForm.jsx";
 import RegisterForm from "./components/RegisterForm.jsx";
 import TaskList from "./components/TaskList.jsx";
@@ -12,7 +12,8 @@ function App() {
     // Revisar si hay usaurio guardado en LocalStorage
     useEffect(() => {
         const storedUser = getCurrentUser();
-        if(storedUser) {
+        const token = getToken();
+        if(storedUser && token) {
             setUser(storedUser);
         }
     }, []);

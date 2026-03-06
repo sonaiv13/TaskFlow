@@ -14,7 +14,7 @@ function TaskList({ user }) {
 
     const loadTasks = async () => {
         try {
-            const data = await getTasks(user.id);
+            const data = await getTasks();
             setTasks(data);
         } catch (error) {
             console.error(error);
@@ -23,12 +23,14 @@ function TaskList({ user }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(!title) return alert("El título es obligatorio");
+
         try {
             if(editingId) {
-                await updateTask(user.id, editingId, {title, description});
+                await updateTask(editingId, {title, description});
                 setEditingId(null);
             } else {
-                await createTask(user.id, {title, description});
+                await createTask({title, description});
             }
 
             setTitle("");
@@ -47,10 +49,10 @@ function TaskList({ user }) {
 
     const handleDelete = async (taskId) => {
         try {
-            await deleteTask(user.id, taskId);
+            await deleteTask(taskId);
             loadTasks();
         } catch (error) {
-            console.error(error);
+            console.error("Error al eliminar tarea: " ,error);
         }
     };
 

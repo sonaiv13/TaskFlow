@@ -3,15 +3,16 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/tasks";
 
 const getAuthHeader = () => {
-  const token = localStorage.getItem("token");
-  return {
-      headers: { Authorization: `Bearer ${token}` }
-  };
+    const token = localStorage.getItem("token"); // token guardado en login
+    if (!token) return {};
+    return {
+        headers: { Authorization: `Bearer ${token}` }
+    };
 };
 
-export const createTask = async (userId, task) => {
+export const createTask = async (task) => {
     try {
-        const response = await axios.post(`${API_URL}/${userId}`, task, getAuthHeader());
+        const response = await axios.post(API_URL, task, getAuthHeader());
         return response.data;
     } catch (error) {
         if(error.response) throw error.response.data;
@@ -19,9 +20,9 @@ export const createTask = async (userId, task) => {
     }
 };
 
-export const getTasks = async (userId) => {
+export const getTasks = async () => {
     try {
-        const response = await axios.get(`${API_URL}/${userId}`, getAuthHeader());
+        const response = await axios.get(API_URL, getAuthHeader());
         return response.data;
     } catch (error) {
         if(error.response) throw error.response.data;
@@ -29,9 +30,9 @@ export const getTasks = async (userId) => {
     }
 };
 
-export const updateTask = async (userId, taskId, task) => {
+export const updateTask = async (taskId, task) => {
     try {
-        const response = await axios.put(`${API_URL}/${userId}/${taskId}`, task, getAuthHeader());
+        const response = await axios.put(`${API_URL}/${taskId}`, task, getAuthHeader());
         return response.data;
     } catch (error) {
         if(error.response) throw error.response.data;
@@ -39,9 +40,9 @@ export const updateTask = async (userId, taskId, task) => {
     }
 };
 
-export const deleteTask = async (userId, taskId) => {
+export const deleteTask = async (taskId) => {
     try {
-        await axios.delete(`${API_URL}/${userId}/${taskId}`, getAuthHeader());
+        await axios.delete(`${API_URL}/${taskId}`, getAuthHeader());
     }  catch (error) {
         if(error.response) throw error.response.data;
         throw error;
