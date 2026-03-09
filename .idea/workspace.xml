@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="taskService modified to send token in requests.">
+    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="Frontend modified to work without using userId.">
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/data/taskflow.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/data/taskflow.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/services/taskService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/taskService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,14 +14,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="81" />
+    <option name="cachedIndexableFilesCount" value="84" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -120,7 +117,9 @@
       <workItem from="1772541483516" duration="4899000" />
       <workItem from="1772631957037" duration="3434000" />
       <workItem from="1772737267944" duration="2978000" />
-      <workItem from="1772801776610" duration="4854000" />
+      <workItem from="1772801776610" duration="5254000" />
+      <workItem from="1772977554439" duration="843000" />
+      <workItem from="1773063831904" duration="1216000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend added to project. Backend and Frontend organized.">
       <option name="closed" value="true" />
@@ -306,11 +305,38 @@
       <option name="project" value="LOCAL" />
       <updated>1772745058279</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Frontend modified to work without using userId.">
+      <option name="closed" value="true" />
+      <created>1772807258590</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1772807258590</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Frontend modified to work without using userId.">
+      <option name="closed" value="true" />
+      <created>1772807271160</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1772807271160</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Frontend added to project. Backend and Frontend organized." />
@@ -334,6 +360,7 @@
     <MESSAGE value="App.jsx modified to show Tasks list when logged in. And saves user when registers or login" />
     <MESSAGE value="authService in backend modified to include tokens." />
     <MESSAGE value="taskService modified to send token in requests." />
-    <option name="LAST_COMMIT_MESSAGE" value="taskService modified to send token in requests." />
+    <MESSAGE value="Frontend modified to work without using userId." />
+    <option name="LAST_COMMIT_MESSAGE" value="Frontend modified to work without using userId." />
   </component>
 </project>
