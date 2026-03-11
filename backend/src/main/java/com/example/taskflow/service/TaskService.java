@@ -41,13 +41,15 @@ public class TaskService {
         task.setTitle(title);
         task.setDescription(description);
         task.setUser(user);
+        task.setCompleted(false);
 
         Task savedTask = taskRepository.save(task);
 
         return new TaskResponse(
                 savedTask.getId(),
                 savedTask.getTitle(),
-                savedTask.getDescription()
+                savedTask.getDescription(),
+                savedTask.isCompleted()
         );
     }
 
@@ -60,7 +62,8 @@ public class TaskService {
                 .map(task -> new TaskResponse(
                         task.getId(),
                         task.getTitle(),
-                        task.getDescription()
+                        task.getDescription(),
+                        task.isCompleted()
                 ))
                 .toList();
     }
@@ -84,7 +87,8 @@ public class TaskService {
         return new TaskResponse(
                 updatedTask.getId(),
                 updatedTask.getTitle(),
-                updatedTask.getDescription()
+                updatedTask.getDescription(),
+                updatedTask.isCompleted()
         );
     }
 
