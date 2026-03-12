@@ -3,6 +3,7 @@ import LoginForm from "./components/LoginForm.jsx";
 import RegisterForm from "./components/RegisterForm.jsx";
 import TaskList from "./components/TaskList.jsx";
 import {AuthContext} from "./context/AuthContext.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 function App() {
 
@@ -31,14 +32,16 @@ function App() {
 
     //Si hay usuario logueado
     return (
-      <div style={{ padding: '20px' }}>
-          <h2>Bienvenida {user.name}</h2>
-          <button onClick={logout}>
-              Cerrar sesión
-          </button>
+        <ProtectedRoute>
+            <div style={{ padding: '20px' }}>
+                <h2>Bienvenida {user.name}</h2>
+                <button onClick={logout}>
+                    Cerrar sesión
+                </button>
 
-          <TaskList user={user}/>
-      </div>
+                <TaskList user={user}/>
+            </div>
+        </ProtectedRoute>
     );
 }
 
