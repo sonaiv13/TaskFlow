@@ -1,27 +1,14 @@
-import {useEffect, useState} from "react";
-import {getCurrentUser, logout} from "./services/authService.js";
+import {useContext, useState} from "react";
 import LoginForm from "./components/LoginForm.jsx";
 import RegisterForm from "./components/RegisterForm.jsx";
 import TaskList from "./components/TaskList.jsx";
+import {AuthContext} from "./context/AuthContext.jsx";
 
 function App() {
 
-    const [user, setUser] = useState(null);
+    const { user, logout } = useContext(AuthContext);
+
     const [showRegister, setShowRegister] = useState(false);
-
-    // Revisar si hay usaurio guardado en LocalStorage
-    useEffect(() => {
-        const storedUser = getCurrentUser();
-        if(storedUser) {
-            setUser(storedUser);
-        }
-    }, []);
-
-    //Cerrar sesión
-    const handleLogout = () => {
-        logout();
-        setUser(null);
-    };
 
     // Si no hay usuario logueado
     if(!user){
@@ -29,7 +16,6 @@ function App() {
             <div style={{ padding: '20px' }}>
                 <h1>TaskFlow - Registro</h1>
                 <RegisterForm
-                    onRegister={(newUser) => setUser(newUser)}
                     onSwitch={() => setShowRegister(false)}
                 />
             </div>
@@ -37,7 +23,6 @@ function App() {
             <div style={{ padding: '20px' }}>
                 <h1>TaskFlow - Login</h1>
                 <LoginForm
-                    onLogin={(loggedUser) => setUser(loggedUser)}
                     onSwitch={() => setShowRegister(true)}
                 />
             </div>
@@ -48,7 +33,9 @@ function App() {
     return (
       <div style={{ padding: '20px' }}>
           <h2>Bienvenida {user.name}</h2>
-          <button onClick={handleLogout}>Cerrar sesión</button>
+          <button onClick={logout}>
+              Cerrar sesión
+          </button>
 
           <TaskList user={user}/>
       </div>

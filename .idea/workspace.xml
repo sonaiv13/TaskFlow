@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="Frontend modified to add task toggle functionality">
+    <list default="true" id="355f4b0d-0a14-46a2-96a9-711d041d016a" name="Changes" comment="Filters added for tasks">
+      <change afterPath="$PROJECT_DIR$/frontend/src/context/AuthContext.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/data/taskflow.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/data/taskflow.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/TaskList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/data/taskflow.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/backend/data/taskflow.trace.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -125,7 +127,9 @@
       <workItem from="1772801776610" duration="5254000" />
       <workItem from="1772977554439" duration="843000" />
       <workItem from="1773063831904" duration="3767000" />
-      <workItem from="1773228525632" duration="5116000" />
+      <workItem from="1773228525632" duration="5759000" />
+      <workItem from="1773338565735" duration="58000" />
+      <workItem from="1773338640693" duration="909000" />
     </task>
     <task id="LOCAL-00001" summary="Frontend added to project. Backend and Frontend organized.">
       <option name="closed" value="true" />
@@ -351,7 +355,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773232146236</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Filters added for tasks">
+      <option name="closed" value="true" />
+      <created>1773238627265</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1773238627265</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Frontend added to project. Backend and Frontend organized." />
     <MESSAGE value="Unversioned files" />
     <MESSAGE value="userService created - create and get user by id methods." />
     <MESSAGE value="taskService created - create and get tasks by user id methods." />
@@ -394,6 +405,7 @@
     <MESSAGE value="api.js created to send token with Axios interceptor." />
     <MESSAGE value="Bug fixed to show Tasks list properly." />
     <MESSAGE value="Frontend modified to add task toggle functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frontend modified to add task toggle functionality" />
+    <MESSAGE value="Filters added for tasks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filters added for tasks" />
   </component>
 </project>
