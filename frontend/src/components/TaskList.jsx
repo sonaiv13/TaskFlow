@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTasks, createTask, updateTask, deleteTask, toggleTask } from "../services/taskService.js";
+import TaskForm from "./TaskForm.jsx";
 
 const FILTERS = [
     {key: 'all', label: 'Todas'},
@@ -98,72 +99,164 @@ function TaskList({ user }) {
         .sort((a, b) => a.completed - b.completed);
 
     return (
-        <div>
-            <h2>Tareas de {user.name}</h2>
+        <div className=''>
 
-            {/* FORMULARIO */}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    placeholder='Título'
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-                <input
-                    type='text'
-                    placeholder='Descripción'
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    required
-                />
+            {/* Stats */}
+            <div className=''>
+                {[
+                    { label: 'Total', value: tasks.length, color: 'var(--accent)'},
+                    { label: 'Pendientes', value: pendingCount, color: '#f59e0b'},
+                    { label: 'Completadas', value: completedCount, color: 'var(--success)'},
+                ].map(({ label, value, color }) => (
+                    <div
+                        key={label}
+                        className=''
+                        style={{ background: 'var(--bg-card)', border: '1px solid var(--border)'}}
+                    >
+                        <div className='' style={{ color, fontFamily: 'Syne, sans-serif' }}>
+                            {value}
+                        </div>
+                        <div className='' style={{ color: 'var(--text-muted)' }}>
+                            {label}
+                        </div>
+                    </div>
+                ))}
+            </div>
 
-                <button type='submit'>
-                    {editingId ? "Actualizar" : "Crear"}
-                </button>
-            </form>
+            {/* FORM */}
+            <div
+                className=''
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+            >
+                <h2
+                    className=''
+                    style={{ color: 'var(--text-muted)' }}
+                >
+                    {editingId ? 'Editando tarea' : 'Nueva tarea'}
+                </h2>
+                <form onSubmit={handleSubmit} className=''>
+                    <input
+                        type='text'
+                        placeholder='Título de la tarea...'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                        className=''
+                        style={{
+                            background: 'var(--bg-primary)',
+                            border: '1px solid var(--border)',
+                            color: 'var(--text-primary)',
+                        }}
+                        onFocus={e => (e.target.style.borderColor = 'var(--accent)')}
+                        onBlur={e => (e.target.style.borderColor = 'var(--border)')}
+                    />
+                    <input
+                        type='text'
+                        placeholder='Descripción'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        className=''
+                        style={{
+                            background: 'var(--bg-primary)',
+                            border: '1px solid var(--border)',
+                            color: 'var(--text-primary)',
+                        }}
+                        onFocus={e => (e.target.style.borderColor = 'var(--accent)')}
+                        onBlur={e => (e.target.style.borderColor = 'var(--border)')}
+                    />
 
-            {/* CONTADOR */}
-            <p>{pendingCount} tareas pendientes</p>
+                    <div className=''>
+                        <button
+                            type='submit'
+                            disabled={loading || !title}
+                            className=''
+                            style={{
+                                background: 'linear-gradient(135deg, var(--accent), #5b4dd4)',
+                                color: 'white',
+                                border: 'none',
+                                cursor: loading || !title ? 'not-allowed' : 'pointer',
+                                opacity: !title ? 0.5 : 1,
+                                boxShadow: title ? '0 4px 16px var(--accent-glow)' : 'none',
+                            }}
+                            onMouseEnter={e => {
+                                if(title) e.currentTarget.style.transform = 'translateY(-1px)';
+                            }}
+                            onMouseLeave={e => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                            }}
+                        >
+                            {loading ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
+                        </button>
+
+                        {editingId && (
+                            <button
+                                type='button'
+                                disabled={handleCancelEdit}
+                                className=''
+                                style={{
+                                    background: 'var(--bg-primary)',
+                                    color: 'var(--text-muted)',
+                                    border: '1px solid var(--border)',
+                                    cursor: 'pointer',
+                                }}
+                                onMouseEnter={e => (e.currentTarget.style.borderColor = 'var(--danger)')}
+                                onMouseLeave={e => (e.currentTarget.style.borderColor = 'var(--border)')}
+                            >
+                                Cancelar
+                            </button>
+                        )}
+                    </div>
+                </form>
+            </div>
 
             {/* FILTROS */}
-            <div style={{ marginBottom: '20px' }}>
-                <button onClick={() => setFilter("all")}>
-                    Todas
-                </button>
-
-                <button onClick={() => setFilter("pending")}>
-                    Pendientes
-                </button>
-
-                <button onClick={() => setFilter("completed")}>
-                    Completadas
-                </button>
+            <div
+                className=''
+                style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+            >
+                {FILTERS.map(({ key, label }) => (
+                    <button
+                        key={key}
+                        onClick={() => setFilter(key)}
+                        className=''
+                        style={{
+                            background: filter === key ? 'var(--accent)' : 'transparent',
+                            color: filter === key ? 'white' : 'var(--text-muted)',
+                            border: 'none',
+                            cursor: 'pointer',
+                            boxShadow: filter === key ? '0 2px 12px var(--accent-glow)' : 'none',
+                        }}
+                    >
+                        {label}
+                    </button>
+                ))}
             </div>
 
             {/* LISTA DE TAREAS */}
-            <ul>
-                {filteredTasks.map((task) => (
-                    <li key={task.id} style={{ opacity: task.completed ? 0.6 : 1 }}>
-                        <strong
-                            style={{
-                                textDecoration: task.completed ? "line-through" : "none",
-                                color: task.completed ? "gray" : "black"
-                            }}
-                        >
-                            {task.title}
-                        </strong>
-                        {" - "} {task.description}
-
-                        <button onClick={() => handleToggle(task.id)}>
-                            {task.completed ? "Desmarcar" : "Completar"}
-                        </button>
-
-                        <button onClick={() => handleEdit(task)}>Editar</button>
-                        <button onClick={() => handleDelete(task.id)}>Eliminar</button>
-                    </li>
-                ))}
-            </ul>
+            <div className=''>
+                {filteredTasks.length === 0 ? (
+                    <div
+                        className=''
+                        style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
+                    >
+                        <div className=''>
+                            {filter === 'completed' ? "🎉" : "📝"}
+                        </div>
+                        <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+                            {filter === 'completed'
+                                ? 'Aún no has completado ninguna tarea'
+                                : filter === 'pending'
+                                ? 'No tienes tareas pendientes. !genial!'
+                                : 'Crea tu primera tarea arriba'
+                            }
+                        </p>
+                    </div>
+                ) : (
+                    filteredTasks.map((task, i) => (
+                        <TaskForm/>
+                    ))
+                )}
+            </div>
         </div>
     );
 
