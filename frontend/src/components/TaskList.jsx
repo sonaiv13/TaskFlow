@@ -1,18 +1,23 @@
 import { useEffect, useState } from "react";
 import { getTasks, createTask, updateTask, deleteTask, toggleTask } from "../services/taskService.js";
 
+const FILTERS = [
+    {key: 'all', label: 'Todas'},
+    {key: 'pending', label: 'Pendientes'},
+    {key: 'completed', label: 'Completadas'},
+];
+
 function TaskList({ user }) {
     const [tasks, setTasks] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [editingId, setEditingId] = useState(null);
     const [filter, setFilter] = useState("all");
+    const [loading, setLoading] = useState(false);
 
     //Cargar tareas al iniciar
     useEffect(() => {
-       if(localStorage.getItem("token")) {
-           loadTasks();
-       }
+       if(localStorage.getItem("token")) loadTasks();
     }, []);
 
     const loadTasks = async () => {
@@ -28,6 +33,8 @@ function TaskList({ user }) {
         e.preventDefault();
         if(!title) return alert("El título es obligatorio");
 
+        setLoading(true);
+
         try {
             if(editingId) {
                 await updateTask(editingId, {title, description});
@@ -38,9 +45,11 @@ function TaskList({ user }) {
 
             setTitle("");
             setDescription("");
-            loadTasks();
+            await loadTasks();
         } catch (error) {
             console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -48,28 +57,36 @@ function TaskList({ user }) {
         setTitle(task.title);
         setDescription(task.description);
         setEditingId(task.id);
+        window.scrollTo({top: 0, behavior: "smooth"});
+    };
+
+    const handleCancelEdit = () => {
+        setEditingId(null);
+        setTitle("");
+        setDescription("");
     };
 
     const handleDelete = async (taskId) => {
         try {
             await deleteTask(taskId);
-            loadTasks();
+            setTasks(prev => prev.filter(t => t.id !== taskId))
         } catch (error) {
-            console.error("Error al eliminar tarea: " ,error);
+            console.error(error);
         }
     };
 
     const handleToggle = async (taskId) => {
         try {
-            await toggleTask(taskId);
-            loadTasks();
+            const updated = await toggleTask(taskId);
+            setTasks(prev => prev.map(t => t.id === taskId ? updated : t));
         } catch (error) {
             console.error(error);
         }
     };
 
     //Contador tareas pendientes
-    const pendingCount = tasks.filter(task => !task.completed).length;
+    const pendingCount = tasks.filter(t => !t.completed).length;
+    const completedCount = tasks.filter(t => t.completed).length;
 
     //Filtro de tareas
     const filteredTasks = tasks
