@@ -191,7 +191,7 @@ function TaskList({ user }) {
                         {editingId && (
                             <button
                                 type='button'
-                                disabled={handleCancelEdit}
+                                onClick={handleCancelEdit}
                                 className='px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200'
                                 style={{
                                     background: 'var(--bg-primary)',

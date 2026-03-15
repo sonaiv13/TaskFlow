@@ -77,7 +77,7 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
                 style={{ opacity: hovered ? 1 : 0 }}
             >
                 <button
-                    onClick={() => onEdit(task.id)}
+                    onClick={() => onEdit(task)}
                     className='w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-150'
                     style={{
                         background: 'transparent',
