@@ -5,7 +5,7 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
 
     return (
         <div
-            className=''
+            className='rounded-xl px-5 py-4 flex items-center gap-4 transition-all duration-200'
             style={{
                 background: hovered ? 'var(--bg-card-hover)' : 'var(--bg-card)',
                 border: `solid 1px ${hovered ? 'var(--border-hover)' : 'var(--border)'}`,
@@ -19,7 +19,7 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
             {/* Checkbox */}
             <button
                 onClick={() => onToggle(task.id)}
-                className=''
+                className='mt-0.5 w-5 h-5 rounded-full border-2 shrink-0 flex items-center justify-center transition-all duration-200'
                 style={{
                     background: task.completed ? 'var(--success)' : 'transparent',
                     borderColor: task.completed ? 'var(--success)' : 'var(--text-muted)',
@@ -36,9 +36,9 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
             </button>
 
             {/* Content */}
-            <div className=''>
+            <div className='flex-1 min-w-0'>
                 <p
-                    className=''
+                    className='text-sm font-semibold leading-snug'
                     style={{
                         color: task.completed ? 'var(--text-muted)' : 'var(--text-primary)',
                         textDecoration: task.completed ? 'line-through' : 'none',
@@ -48,7 +48,7 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
                 </p>
                 {task.description && (
                     <p
-                        className=''
+                        className='text-xs mt-1 truncate'
                         style={{ color: 'var(--text-muted)' }}
                     >
                         {task.description}
@@ -58,7 +58,7 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
 
             {/* Status badge */}
             <span
-                className=''
+                className='text-xs px-2 py-1 rounded-full shrink-0 self-start font-medium'
                 style={{
                   background: task.completed
                       ? 'rgba(74, 222, 128, 0.12)'
@@ -73,12 +73,12 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
 
             {/* Actions */}
             <div
-                className=''
+                className='flex gap-1 shrink-0 transition-opacity duration-200'
                 style={{ opacity: hovered ? 1 : 0 }}
             >
                 <button
                     onClick={() => onEdit(task.id)}
-                    className=''
+                    className='w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-150'
                     style={{
                         background: 'transparent',
                         border: '1px solid var(--border)',
@@ -101,7 +101,7 @@ function TaskCard({ task, index, onToggle, onEdit, onDelete }) {
                 </button>
                 <button
                     onClick={() => onDelete(task.id)}
-                    className=''
+                    className='w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-150'
                     style={{
                         background: 'transparent',
                         border: '1px solid var(--border)',
